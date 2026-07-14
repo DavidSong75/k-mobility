@@ -8,7 +8,15 @@
   --muted: #667085;
   --line: #e6e9ef;
   --line-strong: #d7dce5;
-  --blue: #2459db;
+  --blue: #1457f5;
+  --yellow-accent: #f2ad00;
+  --yellow-surface: #fff0ad;
+  --blue-accent: #2864f0;
+  --blue-surface: #dce7ff;
+  --green-accent: #16a05d;
+  --green-surface: #d8f4e3;
+  --purple-accent: #7d4ce0;
+  --purple-surface: #e9ddff;
   --slot-height: 58px;
   --header-height: 64px;
 }
@@ -88,7 +96,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   transition: background-color 160ms ease, transform 160ms ease;
 }
 
-.root-drive-link:hover { background: #f1f5ff; }
+.root-drive-link:hover { background: #e8efff; }
 .root-drive-link:active { transform: translateY(1px); }
 .root-drive-link:focus-visible { outline: 3px solid #b8c9ff; outline-offset: 2px; }
 
@@ -136,7 +144,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .resource-link:hover,
 .resource-link:focus-visible {
   color: var(--blue);
-  background: #f6f8ff;
+  background: #eaf0ff;
 }
 
 .resource-link:hover::before,
@@ -207,13 +215,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
   left: 0;
   right: 0;
   top: 0;
-  height: 3px;
+  height: 5px;
 }
 
-.day-header--yellow::before { background: #f4c926; }
-.day-header--blue::before { background: #2e63df; }
-.day-header--green::before { background: #45a46f; }
-.day-header--purple::before { background: #7956d8; }
+.day-header--yellow::before { background: var(--yellow-accent); }
+.day-header--blue::before { background: var(--blue-accent); }
+.day-header--green::before { background: var(--green-accent); }
+.day-header--purple::before { background: var(--purple-accent); }
 .day-header span { color: #6d778c; font-weight: 650; white-space: nowrap; }
 .day-header strong { font-weight: 780; letter-spacing: -0.02em; }
 
@@ -299,20 +307,48 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .event--program {
   border: 1px solid;
-  transition: transform 150ms ease, box-shadow 150ms ease, filter 150ms ease;
+  border-left-width: 4px;
+  transition: transform 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
 }
 
-.event--yellow { background: #fffaf0; border-color: #edc84a; }
-.event--blue { background: #f2f6ff; border-color: #7da4f7; }
-.event--green { background: #f1fbf5; border-color: #82c79c; }
-.event--purple { background: #f7f3ff; border-color: #a990ea; }
+.event--yellow {
+  --event-accent: var(--yellow-accent);
+  background: var(--yellow-surface);
+  border-color: var(--yellow-accent);
+}
+
+.event--blue {
+  --event-accent: var(--blue-accent);
+  background: var(--blue-surface);
+  border-color: var(--blue-accent);
+}
+
+.event--green {
+  --event-accent: var(--green-accent);
+  background: var(--green-surface);
+  border-color: var(--green-accent);
+}
+
+.event--purple {
+  --event-accent: var(--purple-accent);
+  background: var(--purple-surface);
+  border-color: var(--purple-accent);
+}
+
+.event--yellow:hover,
+.event--yellow:focus-visible { background: #ffe78a; }
+.event--blue:hover,
+.event--blue:focus-visible { background: #c9d9ff; }
+.event--green:hover,
+.event--green:focus-visible { background: #c4efd5; }
+.event--purple:hover,
+.event--purple:focus-visible { background: #dac7ff; }
 
 .event--program:hover,
 .event--program:focus-visible {
   z-index: 6;
   transform: translateY(-1px);
-  filter: saturate(1.05);
-  box-shadow: 0 8px 20px rgb(30 56 112 / 13%);
+  box-shadow: 0 9px 22px color-mix(in srgb, var(--event-accent) 24%, transparent);
 }
 
 .event--program:focus-visible { outline: 3px solid #9eb7ff; outline-offset: 1px; }
@@ -326,7 +362,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   gap: 5px;
   max-width: 14px;
   overflow: hidden;
-  color: #2d4f9f;
+  color: var(--event-accent);
   font-size: 10px;
   font-weight: 750;
   white-space: nowrap;
@@ -344,12 +380,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
   align-items: center;
   padding: 8px 12px;
   text-align: center;
-  border: 1px solid #dbe0e8;
-  background: #f7f8fa;
+  border: 1px solid #cfd6e1;
+  background: #f0f3f7;
 }
 
 .event--meal .event__title,
-.event--break .event__title { color: #667085; font-size: 12px; font-weight: 650; }
+.event--break .event__title { color: #536079; font-size: 12px; font-weight: 700; }
 .event--meal .event__detail { color: #8a93a5; }
 .event--break { background: #fbfbfc; }
 
